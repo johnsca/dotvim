@@ -18,7 +18,7 @@ set undofile
 set showcmd
 
 set foldmethod=indent
-set foldlevel=-99
+set foldlevel=-2
 
 map <leader>td <Plug>TaskList
 
