@@ -118,6 +118,10 @@ autocmd InsertLeave * set iminsert=0
 
 autocmd FileType cucumber set sw=2 sts=2
 
+au FileType python set omnifunc=pythoncomplete#Complete
+let g:SuperTabDefaultCompletionType = "context"
+let g:pyflakes_use_quickfix = 0
+
 set nu
 
 let Tlist_Ctags_Cmd="/opt/local/bin/ctags"
