@@ -12,6 +12,9 @@ set is
 set ignorecase
 set smartcase
 set backspace=eol,start,indent
+set directory=/tmp
+
+com Reverse !tac
 
 set undodir=~/.vim/undodir
 set undofile
