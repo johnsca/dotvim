@@ -1,2 +1,4 @@
 undodir
 .netrwhist
+*.o
+*.so

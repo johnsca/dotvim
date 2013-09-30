@@ -1,3 +1,8 @@
+let mapleader=","
+
+" Source component .vim config files
+runtime! rc.d/**.vim
+
 set mouse=a
 syntax enable
 set shiftwidth=4
@@ -26,8 +31,7 @@ set foldlevel=-2
 map <leader>td <Plug>TaskList
 
 filetype off
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+call pathogen#infect()
 
 filetype on
 filetype plugin indent on
@@ -41,8 +45,6 @@ vnoremap <2-LeftRelease> "+y<LeftRelease>
 "  In visual mode when you press * or # to search for the current selection
 vnoremap <silent> * :call VisualSearch('f')<CR>
 vnoremap <silent> # :call VisualSearch('b')<CR>
-
-let mapleader=","
 
 " vimgrep selected text or none
 vnoremap <silent> gv :call VisualSearch('gv')<CR>
@@ -121,16 +123,15 @@ autocmd InsertLeave * set iminsert=0
 
 autocmd FileType cucumber set sw=2 sts=2
 
-au FileType python set omnifunc=pythoncomplete#Complete
 let g:SuperTabDefaultCompletionType = "context"
 let g:pyflakes_use_quickfix = 0
 
 set nu
 
-let Tlist_Ctags_Cmd="/opt/local/bin/ctags"
+"let Tlist_Ctags_Cmd="/opt/local/bin/ctags"
 let Tlist_WinWidth=50
 map <F4> :TlistToggle<CR>
-map <F8> :!/opt/local/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+"map <F8> :!/opt/local/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 if &term=="xterm" || &term=="xterm-color" || &term=="xterm-256color"
     set t_Co=256
@@ -146,17 +147,6 @@ endif
 highlight WhitespaceEOL ctermbg=red guibg=red
 match WhitespaceEOL /\s\+$/
 
-" Add the virtualenv's site-packages to vim path
-py << EOF
-import os.path
-import sys
-import vim
-if 'VIRTUAL_ENV' in os.environ:
-    project_base_dir = os.environ['VIRTUAL_ENV']
-    sys.path.insert(0, project_base_dir)
-    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-    execfile(activate_this, dict(__file__=activate_this))
-EOF
 
 function! ResCur()
   if line("'\"") <= line("$")
@@ -169,3 +159,9 @@ augroup resCur
   autocmd!
   autocmd BufWinEnter * call ResCur()
 augroup END
+
+set cursorline
+hi CursorLine cterm=NONE ctermfg=NONE ctermbg=234
+hi MatchParen cterm=NONE ctermbg=24 ctermfg=NONE
+hi Folded     term=standout ctermfg=51 ctermbg=238
+hi FoldColumn term=standout ctermfg=51 ctermbg=238
