@@ -1,3 +1,7 @@
+filetype off
+call pathogen#infect()
+filetype on
+
 let mapleader=","
 
 " Source component .vim config files
@@ -30,10 +34,6 @@ set foldlevel=-2
 
 map <leader>td <Plug>TaskList
 
-filetype off
-call pathogen#infect()
-
-filetype on
 filetype plugin indent on
 
 "let g:miniBufExplorerMoreThanOne=1
