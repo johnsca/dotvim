@@ -38,7 +38,7 @@ filetype plugin indent on
 
 "let g:miniBufExplorerMoreThanOne=1
 
-set clipboard=unnamed
+set clipboard=unnamedplus
 vnoremap <LeftRelease> "+y<LeftRelease>
 vnoremap <2-LeftRelease> "+y<LeftRelease>
 
