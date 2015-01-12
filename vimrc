@@ -133,15 +133,31 @@ let Tlist_WinWidth=50
 map <F4> :TlistToggle<CR>
 "map <F8> :!/opt/local/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
-if &term=="xterm" || &term=="xterm-color" || &term=="xterm-256color"
+set cursorline
+if &term=="xterm" || &term=="xterm-color" || &term=="xterm-256color" || &term=="screen"
     set t_Co=256
     set background=dark
     colorscheme coldgreen
-    hi comment ctermfg=242
-    hi linenr ctermfg=242
-    hi search ctermbg=None cterm=inverse
-    hi directory ctermfg=12
+    hi comment    ctermfg=242
+    hi linenr     ctermfg=242
+    hi search     ctermbg=None cterm=inverse
+    hi directory  ctermfg=12
     hi specialkey ctermfg=12
+    hi CursorLine cterm=NONE ctermfg=NONE ctermbg=235
+    hi MatchParen cterm=NONE ctermbg=24 ctermfg=NONE
+    hi Folded     ctermfg=51 ctermbg=238 term=standout
+    hi FoldColumn ctermfg=51 ctermbg=238 term=standout
+    hi Todo       ctermfg=red ctermbg=224 term=standout
+
+    function! ColorDemo()
+        let num = 255
+        while num >= 0
+            exec 'hi col_'.num.' ctermbg='.num.' ctermfg=white'
+            exec 'syn match col_'.num.' "ctermbg='.num.':...." containedIn=ALL'
+            call append(0, 'ctermbg='.num.':....')
+            let num = num - 1
+        endwhile
+    endfunction
 endif
 
 highlight WhitespaceEOL ctermbg=red guibg=red
@@ -160,8 +176,6 @@ augroup resCur
   autocmd BufWinEnter * call ResCur()
 augroup END
 
-set cursorline
-hi CursorLine cterm=NONE ctermfg=NONE ctermbg=234
-hi MatchParen cterm=NONE ctermbg=24 ctermfg=NONE
-hi Folded     term=standout ctermfg=51 ctermbg=238
-hi FoldColumn term=standout ctermfg=51 ctermbg=238
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\.git$\|\.hg$\|\.svn$',
+    \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
