@@ -52,13 +52,14 @@ endfunction
 syn keyword pythonStatement	break continue del
 syn keyword pythonStatement	except exec finally
 syn keyword pythonStatement	pass print raise
-syn keyword pythonStatement	return try with
+syn keyword pythonStatement	return try
+syn match pythonStatement	/^\s*\%(async \)\?with/
 syn keyword pythonStatement	global assert
-syn keyword pythonStatement	lambda yield
+syn keyword pythonStatement	lambda yield await
 
-syn match   pythonDefStatement	/^\s*\%(def\|class\)/
+syn match   pythonDefStatement	/^\s*\%(\%(async \)\?def\|class\)\s/
   \ nextgroup=pythonFunction skipwhite
-syn region  pythonFunctionFold	start="^\z(\s*\)\%(def\|class\)\>"
+syn region  pythonFunctionFold	start="^\z(\s*\)\%(\%(async \)\?def\|class\)\>"
   \ end="\ze\%(\s*\n\)\+\%(\z1\s\)\@!." fold transparent
 syn match   pythonFunction	"[a-zA-Z_][a-zA-Z0-9_]*" contained
 
@@ -68,6 +69,7 @@ syn region  pythonFold matchgroup=pythonComment
   \ start='#.*{{{.*$' end='#.*}}}.*$' fold transparent
 
 syn keyword pythonRepeat	for while
+syn match pythonRepeat		/^\s*async for/
 syn keyword pythonConditional	if elif else
 syn keyword pythonOperator	and in is not or
 " AS will be a keyword in Python 3

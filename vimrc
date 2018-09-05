@@ -31,6 +31,7 @@ set showcmd
 
 set foldmethod=indent
 set foldlevel=-2
+set nosmartindent
 
 map <leader>td <Plug>TaskList
 
@@ -95,6 +96,10 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+" Alternate page down / up (<C-Space> has to be <C-@> for some reason)
+nnoremap <Space> <PageDown>
+nnoremap <C-@> <PageUp>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Cope
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -125,6 +130,7 @@ autocmd FileType cucumber set sw=2 sts=2
 
 let g:SuperTabDefaultCompletionType = "context"
 let g:pyflakes_use_quickfix = 0
+let g:drawit_mode = 'S'
 
 set nu
 
@@ -148,6 +154,7 @@ if &term=="xterm" || &term=="xterm-color" || &term=="xterm-256color" || &term=="
     hi Folded     ctermfg=51 ctermbg=238 term=standout
     hi FoldColumn ctermfg=51 ctermbg=238 term=standout
     hi Todo       ctermfg=red ctermbg=224 term=standout
+    hi NonText    ctermfg=1 term=standout
 
     function! ColorDemo()
         let num = 255
@@ -179,3 +186,7 @@ augroup END
 let g:ctrlp_custom_ignore = {
     \ 'dir':  '\.git$\|\.hg$\|\.svn$',
     \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
+
+autocmd FileType yaml setl sw=2 sts=2
+
+nnoremap <leader>gd :GoDef<cr>
