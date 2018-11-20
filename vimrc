@@ -1,5 +1,5 @@
 filetype off
-call pathogen#infect()
+execute pathogen#infect()
 filetype on
 
 let mapleader=","

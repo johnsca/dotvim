@@ -22,3 +22,6 @@
 [submodule "bundle/vim-go"]
 	path = bundle/vim-go
 	url = https://github.com/fatih/vim-go.git
+[submodule "bundle/Jenkinsfile"]
+	path = bundle/Jenkinsfile
+	url = https://github.com/martinda/Jenkinsfile-vim-syntax
