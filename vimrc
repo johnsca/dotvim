@@ -142,24 +142,36 @@ map <F4> :TlistToggle<CR>
 set cursorline
 if &term=="xterm" || &term=="xterm-color" || &term=="xterm-256color" || &term=="screen"
     set t_Co=256
-    set background=dark
-    colorscheme coldgreen
-    hi comment    ctermfg=242
-    hi linenr     ctermfg=242
-    hi search     ctermbg=None cterm=inverse
-    hi directory  ctermfg=12
-    hi specialkey ctermfg=12
-    hi CursorLine cterm=NONE ctermfg=NONE ctermbg=235
-    hi MatchParen cterm=NONE ctermbg=24 ctermfg=NONE
-    hi Folded     ctermfg=51 ctermbg=238 term=standout
-    hi FoldColumn ctermfg=51 ctermbg=238 term=standout
-    hi Todo       ctermfg=red ctermbg=224 term=standout
-    hi NonText    ctermfg=1 term=standout
+    "let g:PaperColor_Theme_Options = {
+    "  \   'theme': {
+    "  \     'default.light': {
+    "  \       'override' : {
+    "  \         'color03' : ['',  '39'],  " string
+    "  \         'color09' : ['',  '64'],  " import / try-except
+    "  \         'color10' : ['',  '64'],  " type / emph. keywords
+    "  \         'color11' : ['',  '64'],  " flow control
+    "  \         'color13' : ['', '166'],  " number
+    "  \         'color14' : ['',  '64']   " misc keywords
+    "  \       }
+    "  \     }
+    "  \   }
+    "  \ }
+    colorscheme PaperColor
 
-    function! ColorDemo()
+    function! ColorDemoFG()
         let num = 255
         while num >= 0
-            exec 'hi col_'.num.' ctermbg='.num.' ctermfg=white'
+            exec 'hi col_'.num.' ctermfg='.num.''
+            exec 'syn match col_'.num.' "ctermfg='.num.':...." containedIn=ALL'
+            call append(0, 'ctermfg='.num.':....')
+            let num = num - 1
+        endwhile
+    endfunction
+
+    function! ColorDemoBG()
+        let num = 255
+        while num >= 0
+            exec 'hi col_'.num.' ctermbg='.num.''
             exec 'syn match col_'.num.' "ctermbg='.num.':...." containedIn=ALL'
             call append(0, 'ctermbg='.num.':....')
             let num = num - 1
