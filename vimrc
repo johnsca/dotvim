@@ -4,6 +4,8 @@ filetype on
 
 let mapleader=","
 
+let g:syntastic_python_checkers=['python', 'flake8']
+
 " Source component .vim config files
 runtime! rc.d/**.vim
 
