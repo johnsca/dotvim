@@ -2,3 +2,4 @@ undodir
 .netrwhist
 *.o
 *.so
+black/

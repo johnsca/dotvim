@@ -34,3 +34,6 @@
 [submodule "bundle/jinja2"]
 	path = bundle/jinja2
 	url = https://github.com/Glench/Vim-Jinja2-Syntax
+[submodule "bundle/black"]
+	path = bundle/black
+	url = https://github.com/psf/black
