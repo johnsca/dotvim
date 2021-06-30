@@ -158,6 +158,7 @@ if &term=="xterm" || &term=="xterm-color" || &term=="xterm-256color" || &term=="
     "  \     }
     "  \   }
     "  \ }
+    set background=dark
     colorscheme PaperColor
 
     function! ColorDemoFG()
