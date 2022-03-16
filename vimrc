@@ -213,5 +213,12 @@ autocmd FileType yaml setl sw=2 sts=2
 
 nnoremap <leader>gd :GoDef<cr>
 
+function! SourceIfExists(file)
+  if filereadable(expand(a:file))
+    exe 'source' a:file
+  endif
+endfunction
+
 " Source local vim config tweaks
-source ~/.local/config/vim/rc.d/**.vim
+call SourceIfExists("~/.local/config/vim/rc.d/**.vim")
+call SourceIfExists("~/.config/vim/rc.d/**.vim")
