@@ -212,3 +212,6 @@ let g:ctrlp_custom_ignore = {
 autocmd FileType yaml setl sw=2 sts=2
 
 nnoremap <leader>gd :GoDef<cr>
+
+" Source local vim config tweaks
+source ~/.local/config/vim/rc.d/**.vim
