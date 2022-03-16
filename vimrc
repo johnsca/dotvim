@@ -9,6 +9,9 @@ let g:syntastic_python_checkers=['python', 'flake8']
 " Source component .vim config files
 runtime! rc.d/**.vim
 
+" Use new regular expression engine
+set re=0
+
 set mouse=a
 syntax enable
 set shiftwidth=4
