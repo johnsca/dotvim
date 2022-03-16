@@ -37,3 +37,6 @@
 [submodule "bundle/black"]
 	path = bundle/black
 	url = https://github.com/psf/black
+[submodule "bundle/just"]
+	path = bundle/just
+	url = https://github.com/NoahTheDuke/vim-just
