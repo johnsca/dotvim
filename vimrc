@@ -27,6 +27,8 @@ set ignorecase
 set smartcase
 set backspace=eol,start,indent
 set directory=/tmp
+"set nofixendofline
+"set modelines=2
 
 com Reverse !tac
 
@@ -206,7 +208,7 @@ augroup resCur
 augroup END
 
 let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\.git$\|\.hg$\|\.svn$',
+    \ 'dir':  '\.git$\|\.hg$\|\.svn$\|node_modules$',
     \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
 
 autocmd FileType yaml setl sw=2 sts=2
@@ -222,3 +224,24 @@ endfunction
 " Source local vim config tweaks
 call SourceIfExists("~/.local/config/vim/rc.d/**.vim")
 call SourceIfExists("~/.config/vim/rc.d/**.vim")
+
+
+" netrw magic
+" enable mouse usage. makes it easier to browse multiple tabs
+set mouse=a
+" hide netrw top message
+let g:netrw_banner=0
+" tree listing by default
+let g:netrw_liststyle=3
+" hide vim swap files
+let g:netrw_list_hide='.*\.swp$'
+" open files in left window by default
+let g:netrw_altv=1
+" remap shift-enter to fire up the sidebar
+" nnoremap <silent> <S-CR> :rightbelow 20vs<CR>:e .<CR>
+" " the same remap as above - may be necessary in some distros
+" nnoremap <silent> <C-M> :rightbelow 20vs<CR>:e .<CR>
+" " remap control-enter to open files in new tab
+" nmap <silent> <C-CR> t :rightbelow 20vs<CR>:e .<CR>:wincmd h<CR>
+" " the same remap as above - may be necessary in some distros
+" nmap <silent> <NL> t :rightbelow 20vs<CR>:e .<CR>:wincmd h<CR>

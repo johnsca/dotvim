@@ -40,3 +40,6 @@
 [submodule "bundle/just"]
 	path = bundle/just
 	url = https://github.com/NoahTheDuke/vim-just
+[submodule "bundle/mjml"]
+	path = bundle/mjml
+	url = git@github.com:amadeus/vim-mjml.git
